@@ -21,13 +21,14 @@ on:
 jobs:
   my-job: # 自定义的<job_id>
     runs-on: ubuntu-latest
-        steps:
-          - name: Say hello for me
-            env::
-              MY_VAR: Hello there!
-            run: |
-              echo $MY_VAR
-              echo "The workflows is running..."
+
+    steps:
+      - name: Say hello for me
+        env:
+          MY_VAR: Hello there!
+        run: |
+          echo $MY_VAR
+          echo "The workflows is running..."
       
   build-project: # 自定义的<job_id>
     runs-on: ${{ matrix.os }}
