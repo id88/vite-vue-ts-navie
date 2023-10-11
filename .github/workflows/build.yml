@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - neme: Deploy
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist/
