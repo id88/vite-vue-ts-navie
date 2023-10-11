@@ -49,8 +49,8 @@ jobs:
     needs: build-release-files
     runs-on: ubuntu-latest
 
-      steps:
-        - neme: Deploy
-          uses: JamesIves/github-pages-deploy-action@v4
-          with:
-            folder: dist/
+    steps:
+      - neme: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/
