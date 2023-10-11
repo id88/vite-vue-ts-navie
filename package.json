@@ -1,6 +1,7 @@
 {
   "name": "vite-vue-ts-navie",
   "private": true,
+  "homepage": "https://github.com/id88/vite-vue-ts-navie",
   "version": "0.0.1",
   "type": "module",
   "scripts": {

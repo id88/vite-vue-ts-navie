@@ -1,4 +1,4 @@
-name: Build
+name: Build-and-deploy
 # run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 
 on:
@@ -38,9 +38,19 @@ jobs:
       - name: Build Release Files
         run: npm run build
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: build_on_${{ matrix.os }}
-          path: dist/
-          retention-days: 5
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: build_on_${{ matrix.os }}
+      #     path: dist/
+      #     retention-days: 5
+  
+  deploy-on-github:
+    needs: build-release-files
+    runs-on: ubuntu-latest
+
+      steps:
+        - neme: Deploy
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            folder: dist/
