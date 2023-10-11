@@ -37,6 +37,14 @@ jobs:
 
       - name: Build Release Files
         run: npm run build
+      
+      - name: Test
+        run: ls
+      
+      - name: Deploy
+        use: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/
 
       # - name: Upload Artifact
       #   uses: actions/upload-artifact@v3
