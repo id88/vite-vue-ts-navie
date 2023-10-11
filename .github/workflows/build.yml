@@ -42,7 +42,7 @@ jobs:
         run: ls
       
       - name: Deploy
-        use: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist/
 
