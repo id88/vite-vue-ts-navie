@@ -15,6 +15,9 @@ on:
       - ".github/**"
       - "!.github/workflows/build.yml"
 
+permissions:
+  contents: write
+
 jobs:
   build-release-files:
     runs-on: ${{ matrix.os }}
