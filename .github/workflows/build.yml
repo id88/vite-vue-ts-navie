@@ -15,6 +15,8 @@ on:
       - ".github/**"
       - "!.github/workflows/build.yml"
 
+# 如果您不提供带有访问令牌或SSH密钥的操作，则必须访问您的存储库设置并将Read and Write Permissions提供给所提供的GITHUB_TOKEN，
+# 否则可能会遇到权限问题。或者，您可以在工作流文件中设置以下内容，以授予操作所需的权限。https://github.com/JamesIves/github-pages-deploy-action
 permissions:
   contents: write
 
@@ -67,3 +69,6 @@ jobs:
       #   uses: JamesIves/github-pages-deploy-action@v4
       #   with:
       #     folder: dist/
+
+      # 默认是部署到 gh-pages 分支上，如果分支不存在会自动创建，可以在with下面添加branch参数来指定部署到哪个分支上
+      # 在部署之前需要包含actions/checkout步骤
