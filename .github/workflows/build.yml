@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
 
     steps:
       - name: Checkout Code
@@ -50,7 +50,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/
+      - name: Test
+        run: ls
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist/
