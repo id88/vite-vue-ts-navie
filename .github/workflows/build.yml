@@ -1,11 +1,8 @@
-name: MyWorkflows
-
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-# https://docs.github.com/zh/actions/learn-github-actions/contexts#inputs-context
-# https://docs.github.com/zh/actions/learn-github-actions/contexts#github-context
+name: Build
+# run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 
 on:
-  push: # <event_name>
+  push:
     branches: [main]
     paths-ignore:
       - "**.md"
@@ -19,45 +16,31 @@ on:
       - "!.github/workflows/build.yml"
 
 jobs:
-  my-job: # 自定义的<job_id>
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Say hello for me
-        env:
-          MY_VAR: Hello there!
-        run: |
-          echo $MY_VAR
-          echo "The workflows is running..."
-      
-  build-project: # 自定义的<job_id>
+  build-release-files:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      # https://docs.github.com/zh/actions/learn-github-actions/contexts#about-contexts
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
-      - name: Checkout Code  # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsname
-        uses: actions/checkout@v3  # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsname
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:  # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepswith
+        with:
           node-version: 18  
 
       - name: Install Dependencies
-        run: npm install  # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
+        run: npm install 
 
       - name: Build Release Files
         run: npm run build
-        env:  # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsenv-%E7%9A%84%E7%A4%BA%E4%BE%8B
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # https://docs.github.com/zh/actions/security-guides/automatic-token-authentication
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: release_on_${{ matrix.os }}
-          path: release/
+          name: build_on_${{ matrix.os }}
+          path: dist/
           retention-days: 5
