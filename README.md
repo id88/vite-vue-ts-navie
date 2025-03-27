@@ -57,3 +57,15 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## 手动更新依赖
+在项目目录下运行以下命令：
+```
+npm outdated
+```
+这个命令会列出当前依赖、期望版本和最新版本的对比表格
+
+运行以下命令更新所有依赖到最新版本：
+```
+npm install naive-ui@latest pinia@latest vue@latest vite@latest @vitejs/plugin-vue@latest @types/node@latest typescript@latest vue-tsc@latest unplugin-auto-import@latest unplugin-vue-components@latest @vicons/ionicons5@latest
+``` 
