@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     # 添加权限声明
     permissions:
-      issues: write  # 允许创建评论
+      pull-requests: write  # 允许创建评论（issues: write）
       contents: read  # 默认权限，显式声明确保无误
     # 前往仓库的 Settings → Actions → General，确保 Workflow permissions 勾选了 Read and write permissions
 
