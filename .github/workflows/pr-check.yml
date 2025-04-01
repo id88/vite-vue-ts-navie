@@ -23,9 +23,9 @@ jobs:
     name: Build Check
     runs-on: ubuntu-latest
     # 添加权限声明
-    permissions:
-      pull-requests: write  # 允许创建评论（issues: write）
-      contents: read  # 默认权限，显式声明确保无误
+    # permissions:
+      # pull-requests: write  # 允许创建评论（issues: write）
+      # contents: read  # 默认权限，显式声明确保无误
     # 前往仓库的 Settings → Actions → General，确保 Workflow permissions 勾选了 Read and write permissions
 
     steps:
@@ -56,7 +56,7 @@ jobs:
         with:
           script: |
             const buildStatus = process.env.BUILD_STATUS === '0' ? '✅ 构建成功' : '❌ 构建失败';
-            github.rest.issues.createComment({
+            github.rest.pulls.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
