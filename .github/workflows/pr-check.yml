@@ -17,11 +17,11 @@ on:
       - ".github/**"
       - "!.github/workflows/**"
 
-# 添加权限声明
+# 设置工作流权限
 permissions:
-  pull-requests: write  # 允许创建评论（issues: write）
-  contents: read  # 默认权限，显式声明确保无误
-  # 前往仓库的 Settings → Actions → General，确保 Workflow permissions 勾选了 Read and write permissions
+  issues: write
+  pull-requests: write
+  contents: read
 
 jobs:
   # 构建检查任务
@@ -57,14 +57,14 @@ jobs:
         with:
           script: |
             const buildStatus = process.env.BUILD_STATUS === '0' ? '✅ 构建成功' : '❌ 构建失败';
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `## 构建检查结果\n${buildStatus}\n\n构建时间：${new Date().toLocaleString()}`
             })
         env:
-          BUILD_STATUS: ${{ job.status == 'success' && '0' || '1' }} 
+          BUILD_STATUS: ${{ job.status == 'success' && '0' || '1' }}
 
 # 还需要在仓库中设置分支保护规则，以确保只有构建检查通过的 PR 才能被合并。您需要在 GitHub 仓库中进行以下设置：
 # 进入仓库的 Settings → Branches
