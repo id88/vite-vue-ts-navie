@@ -18,7 +18,7 @@
     "@vicons/ionicons5": "^0.13.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "naive-ui": "^2.41.0",
-    "typescript": "^5.8.2",
+    "typescript": "^5.9.2",
     "unplugin-auto-import": "^19.1.2",
     "unplugin-vue-components": "^28.4.1",
     "vite": "^6.2.4",
