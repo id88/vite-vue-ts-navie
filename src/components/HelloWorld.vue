@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { CashOutline as CashIcon } from '@vicons/ionicons5'
 
 defineProps<{ msg: string }>()
 
@@ -10,8 +10,9 @@ const count = ref(0)
     <h2>{{ msg }}</h2>
 
     <div class="card">
-        <button type="button" @click="count++">count is {{ count }}</button>
+        <n-button type="primary" @click="count++">count is {{ count }}</n-button>
     </div>
+
     <n-space>
         <n-button>Default</n-button>
         <n-button type="tertiary"> Tertiary </n-button>
@@ -21,7 +22,9 @@ const count = ref(0)
         <n-button type="warning"> Warning </n-button>
         <n-button type="error"> Error </n-button>
     </n-space>
+
     <br>
+
     <n-space>
         <n-button strong secondary> Default </n-button>
         <n-button strong secondary type="tertiary"> Tertiary </n-button>
@@ -31,7 +34,9 @@ const count = ref(0)
         <n-button strong secondary type="warning"> Warning </n-button>
         <n-button strong secondary type="error"> Error </n-button>
     </n-space>
+
     <br>
+
     <n-space>
         <n-button strong secondary round> Default </n-button>
         <n-button strong secondary round type="primary"> Primary </n-button>
@@ -40,50 +45,43 @@ const count = ref(0)
         <n-button strong secondary round type="warning"> Warning </n-button>
         <n-button strong secondary round type="error"> Error </n-button>
     </n-space>
+
     <br>
+
     <n-space>
         <n-button strong secondary circle>
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
         <n-button strong secondary circle type="primary">
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
         <n-button strong secondary circle type="info">
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
         <n-button strong secondary circle type="success">
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
         <n-button strong secondary circle type="warning">
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
         <n-button strong secondary circle type="error">
             <template #icon>
-                <n-icon><cash-icon /></n-icon>
+                <n-icon><CashIcon /></n-icon>
             </template>
         </n-button>
     </n-space>
 </template>
-<script lang="ts">
-import { CashOutline as CashIcon } from '@vicons/ionicons5'
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-  components: {
-    CashIcon
-  }
-})
-</script>
 <style scoped>
 
 </style>

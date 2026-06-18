@@ -4,10 +4,14 @@
 
 version: 2
 updates:
-  # Enable version updates for npm
+  # npm 依赖版本更新
   - package-ecosystem: "npm"
-    # Look for `package.json` and `lock` files in the `root` directory
     directory: "/"
-    # run on the first day of each month
+    schedule:
+      interval: "monthly"
+
+  # GitHub Actions 版本更新
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "monthly"

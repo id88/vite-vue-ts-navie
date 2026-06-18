@@ -38,22 +38,23 @@ jobs:
     steps:
       # 步骤1：检出代码
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 步骤2：设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: 18  
+          node-version: 22
+          cache: 'npm'
 
       # 步骤3：安装项目依赖
       - name: Install Dependencies
-        run: npm install 
+        run: npm install
 
       # 步骤4：构建项目
       - name: Build Release Files
         run: npm run build
-      
+
       # 步骤5：测试目录内容
       - name: Test
         run: ls
