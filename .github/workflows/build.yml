@@ -38,7 +38,7 @@ jobs:
     steps:
       # 步骤1：检出代码
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 步骤2：设置 Node.js 环境
       - name: Setup Node.js
