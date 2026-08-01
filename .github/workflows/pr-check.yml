@@ -30,7 +30,7 @@ jobs:
 
       # 步骤2：设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           # 启用依赖缓存
